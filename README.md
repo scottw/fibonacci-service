@@ -11,6 +11,16 @@ Then:
     $ curl http://localhost:3000/10
     [0,1,1,2,3,5,8,13,21,34]
 
+## Development
+
+Set up your development environment with Carton:
+
+    $ carton install
+
+If you don't have Carton, install it:
+
+    $ cpanm Carton
+
 ## Testing
 
 Test this application with:
