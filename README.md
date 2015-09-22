@@ -8,7 +8,7 @@ Usage:
 
 Then:
 
-    $ curl http://localhost:3000/5
+    $ curl http://localhost:3000/10
     [0,1,1,2,3,5,8,13,21,34]
 
 ## Testing
