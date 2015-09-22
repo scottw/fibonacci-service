@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+use Mojolicious::Lite;
+
+my @cache = (0, 1);  ## primed
+
+get '/:num' => sub {
+    my $c = shift;
+    my $num = $c->param('num');
+
+    unless ($num =~ /^\d*$/) {
+        return $c->render(json => {error => "Input must be a positive integer"},
+                          status => 400);
+    }
+
+    my $seq = $num - 1;  ## 0 based vs 1 based arrays
+    fibonacci($seq);     ## calculate sequence in-cache
+
+    ## render the requested portion of the cache
+    $c->render(json => [@cache[0..$seq]]);
+};
+
+sub fibonacci {
+    my $seq = shift;
+
+    return $cache[$seq] if exists $cache[$seq];
+
+    $cache[$seq] = fibonacci($seq-2, @cache) + fibonacci($seq-1, @cache);
+
+    return $cache[$seq];
+}
+
+app->start;
