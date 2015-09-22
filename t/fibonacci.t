@@ -1,11 +1,14 @@
 #!/usr/bin/env perl
-use Test::More tests => 18;
+use Test::More tests => 20;
 use Test::Mojo;
 
 use FindBin;
 require "$FindBin::Bin/../fibonacci";
 
 my $t = Test::Mojo->new;
+
+$t->get_ok('/')
+  ->status_is(404);
 
 $t->get_ok('/broken')
   ->status_is(400);

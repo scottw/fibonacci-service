@@ -7,7 +7,7 @@ get '/:num' => sub {
     my $c = shift;
     my $num = $c->param('num');
 
-    unless ($num =~ /^\d*$/) {
+    unless ($num =~ /^\d+$/) {
         return $c->render(json => {error => "Input must be a positive integer"},
                           status => 400);
     }
