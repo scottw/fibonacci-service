@@ -35,4 +35,4 @@ Deploy this application with:
 
 Then rsync this directory to the host and run:
 
-    $ carton install --cached --deployment
+    remote-host: $ carton install --cached --deployment
